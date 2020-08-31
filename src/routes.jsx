@@ -7,7 +7,7 @@ import Contact from "./pages/contact";
 const Routes = () => {
 
     const routes = [
-        { route: "/", page: <Home pageName={"Home"} /> },
+        { route: "/", exact: true, page: <Home pageName={"Home"} /> },
         { route: "/home", page: <Home pageName={"Home"} /> },
         { route: "/about", page: <About pageName={"About"} /> },
         { route: "/contact", page: <Contact pageName={"Contact"} /> },
@@ -15,13 +15,13 @@ const Routes = () => {
 
     return (
         <Switch>
-            {routes.map(({ route, page }) =>
-                <Route key={route} path={route}>
+            {routes.map(({ route, exact, page }) => (
+                <Route key={route} exact={exact} path={route}>
                     {page}
                 </Route>
-            )}
+            ))}
         </Switch>
     );
-}
+};
 
 export default Routes;
